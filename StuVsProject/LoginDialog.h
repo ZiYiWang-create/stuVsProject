@@ -19,9 +19,7 @@ signals:
 
 private slots:
     void on_LogInBtn_clicked();
-
     void on_exitBtn_clicked();
-
     void on_registerBtn_clicked();
 
 private:

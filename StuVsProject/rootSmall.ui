@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>726</height>
+    <width>523</width>
+    <height>462</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,13 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(161, 161, 255);
+background-color: rgb(255, 255, 255);
+</string>
+     </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="student_page">
       <attribute name="title">
@@ -29,6 +34,11 @@
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
         <widget class="QTableView" name="stuTableView">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);
+</string>
+         </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
@@ -39,7 +49,7 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>按学号删除：</string>
+            <string>删除：</string>
            </property>
           </widget>
          </item>
@@ -49,7 +59,7 @@
          <item>
           <widget class="QPushButton" name="delBtn">
            <property name="text">
-            <string>删除</string>
+            <string>确定</string>
            </property>
           </widget>
          </item>
@@ -57,6 +67,9 @@
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="flashBtn">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>刷新</string>
          </property>
@@ -77,7 +90,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>92</height>
+           <height>130</height>
           </size>
          </property>
         </spacer>
@@ -89,7 +102,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>210</width>
+           <width>228</width>
            <height>20</height>
           </size>
          </property>
@@ -99,17 +112,20 @@
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="minimumSize">
           <size>
-           <width>350</width>
-           <height>450</height>
+           <width>314</width>
+           <height>375</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>350</width>
-           <height>450</height>
+           <width>341</width>
+           <height>375</height>
           </size>
          </property>
-         <widget class="rootInsertTeacher" name="teacherPage" native="true"/>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <widget class="rootInsertTeacher" name="teacherPage"/>
          <widget class="rootInsertStu" name="studentPage"/>
         </widget>
        </item>
@@ -120,7 +136,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>209</width>
+           <width>227</width>
            <height>20</height>
           </size>
          </property>
@@ -134,7 +150,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>92</height>
+           <height>129</height>
           </size>
          </property>
         </spacer>

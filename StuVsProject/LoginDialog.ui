@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>428</width>
+    <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,13 @@
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+border-radius:5px;
+background:rgb(87, 95, 121);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>密码</string>
         </property>
@@ -41,6 +48,14 @@
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+border-radius:5px;
+background:rgb(87, 95, 121);
+color:white;
+font-size:15px;}
+</string>
+        </property>
         <property name="text">
          <string>用户名</string>
         </property>
@@ -55,6 +70,13 @@
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QRadioButton" name="StuRadioButton">
+        <property name="styleSheet">
+         <string notr="true">QRadioButton{
+border-radius:5px;
+background:rgb(87, 95, 121);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>学生</string>
         </property>
@@ -62,6 +84,13 @@
       </item>
       <item row="0" column="1">
        <widget class="QRadioButton" name="TeacherRadioButton">
+        <property name="styleSheet">
+         <string notr="true">QRadioButton{
+border-radius:5px;
+background:rgb(87, 95, 121);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>教师</string>
         </property>
@@ -69,6 +98,13 @@
       </item>
       <item row="0" column="2">
        <widget class="QRadioButton" name="rootRadioButton">
+        <property name="styleSheet">
+         <string notr="true">QRadioButton{
+border-radius:5px;
+background:rgb(87, 95, 121);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>管理员</string>
         </property>
@@ -76,6 +112,13 @@
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="LogInBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-radius:5px;
+background:rgb(153, 153, 153);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>登录</string>
         </property>
@@ -83,6 +126,13 @@
       </item>
       <item row="1" column="1">
        <widget class="QPushButton" name="registerBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-radius:5px;
+background:rgb(153, 153, 153);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>忘记密码</string>
         </property>
@@ -90,6 +140,13 @@
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="exitBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-radius:5px;
+background:rgb(153, 153, 153);
+color:white;
+font-size:15px;}</string>
+        </property>
         <property name="text">
          <string>退出</string>
         </property>
@@ -111,6 +168,8 @@
   <tabstop>rootRadioButton</tabstop>
   <tabstop>TeacherRadioButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="MainWidget.qrc"/>
+ </resources>
  <connections/>
 </ui>

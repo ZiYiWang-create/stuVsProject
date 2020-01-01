@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="online">
+    <file>Resources/QQ图片20191231101937.jpg</file>
+    <file>Resources/{69294EE1-A5EA-A618-B9A9-98ED10AE6C49}.jpg</file>
+  </qresource>
+  <qresource prefix="check_in">
+    <file>Resources/maxwell-ridgeway-UyhtqolKMb4-unsplash.jpg</file>
+  </qresource>
+</RCC>

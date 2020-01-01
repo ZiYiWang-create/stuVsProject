@@ -13,7 +13,7 @@ public:
 
 signals:
 	void backToLogin();
-
+			
 protected slots:
 	//void show_view();
 

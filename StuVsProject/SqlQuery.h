@@ -97,7 +97,42 @@ public:
             return false;
         }
     }
-    
+    static bool isInTable_standard(QString field,QString field_value,QString table_name)
+    {
+        QSqlDatabase db = createConnection();
+        if (!db.open()) {
+            MsgInterface::show_error("错误", "连接服务器错误");
+            return false;
+        }
+        QString str = QString("select * from %1 where %2=\"%3\";").arg(table_name, field, field_value);
+        QSqlQuery query(db);
+        if (query.exec(str)) {
+            db.close();
+            return true;
+        }
+        else {
+            db.close();
+            return false;
+        }
+    }
+    static bool isInTable_standard(QString field, QString field_value, QString field2, QString field2_value, QString table_name)
+    {
+        QSqlDatabase db = createConnection();
+        if (!db.open()) {
+            MsgInterface::show_error("错误", "连接服务器错误");
+            return false;
+        }
+        QString str = QString("select * from %1 where %2=\"%3\" and %4=\"%5\";").arg(table_name, field, field_value,field2,field2_value);
+        QSqlQuery query(db);
+        if (query.exec(str)) {
+            db.close();
+            return true;
+        }
+        else {
+            db.close();
+            return false;
+        }
+    }
     //更新密码
     static bool upgradePwd(QString id, QString new_pwd, QString table_name)
     {
@@ -173,7 +208,7 @@ public:
             if (!query.exec(QString("delete from scores where studentId=\"%1\";").arg(id))) { MsgInterface::show_error("错误", "分数删除错误"); query.clear(); return false;   }
         }
         QSqlQuery query(db);
-        if (query.exec(str)) {
+        if (query.exec(str)) {      
             db.close();
             return true;
         }
@@ -183,5 +218,85 @@ public:
         }
     }
 
+    //score添加
+    static bool addScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, QString paperScore,QString score)
+    {
+        QSqlDatabase db = createConnection();
+        if (!db.open()) {
+            MsgInterface::show_error("错误", "连接服务器错误");
+            return false;
+        }
+        //计算综合成绩
+        float actgrade = 0;
+        float d_usualScore = usualScore.toDouble();
+        float d_paperScore = paperScore.toDouble();
+        float d_experimentScore = experimentScore.toDouble();
+        if (d_experimentScore == -1)
+            actgrade = d_usualScore * 0.3 + d_paperScore * 0.7;
+        //无实验
+        else
+            actgrade = d_usualScore * 0.15 + d_experimentScore * 0.15 + d_paperScore * 0.7;
+        float actscore = 0;
+        //实际学分
+        if (actgrade > 90 && actgrade <= 100) actscore = score.toDouble();
+        else if (actgrade > 80 && actgrade <= 90) actscore = score.toDouble() * 0.8;
+        else if (actgrade > 70 && actgrade <= 80) actscore = score.toDouble() * 0.75;
+        else if (actgrade > 60 && actgrade <= 70) actscore = score.toDouble() * 0.6;
+        else actscore = 0;
+
+        QString str = QString("insert into scores values(\"" + id + "\",\"" + courseId + "\",\"" + courseName +
+            "\"," + usualScore + "," + experimentScore + "," + paperScore + "," + score + "," + 
+            QString::number(actscore) +","+ QString::number(actgrade) + ");");
+        
+        QSqlQuery query(db);
+        if (query.exec(str)) {
+            db.close(); 
+            return true;
+        }
+        else {
+            db.close();
+            return false;
+        }
+    }
+
+    //修改成绩
+    static bool updateScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, QString paperScore, QString score)
+    {
+        QSqlDatabase db = createConnection();
+        if (!db.open()) {
+            MsgInterface::show_error("错误", "连接服务器错误");
+            return false;
+        }
+        //计算综合成绩
+        float actgrade = 0;
+        float d_usualScore = usualScore.toDouble();
+        float d_paperScore = paperScore.toDouble();
+        float d_experimentScore = experimentScore.toDouble();
+        if (d_experimentScore == -1)
+            actgrade = d_usualScore * 0.3 + d_paperScore * 0.7;
+        //无实验
+        else
+            actgrade = d_usualScore * 0.15 + d_experimentScore * 0.15 + d_paperScore * 0.7;
+        float actscore = 0;
+        //实际学分
+        if (actgrade > 90 && actgrade <= 100) actscore = score.toDouble();
+        else if (actgrade > 80 && actgrade <= 90) actscore = score.toDouble() * 0.8;
+        else if (actgrade > 70 && actgrade <= 80) actscore = score.toDouble() * 0.75;
+        else if (actgrade > 60 && actgrade <= 70) actscore = score.toDouble() * 0.6;
+        else actscore = 0;
+
+        QString str = QString("update scores set usualPerformance=%1,experiment=%2,paperScore=%3,actualScore=%4,"
+            "actualGrade=%5 where studentId=\"%6\" and courseId=\"%7\";").arg(usualScore, experimentScore, paperScore, QString::number(actscore), QString::number(actgrade), id, courseId);
+
+        QSqlQuery query(db);
+        if (query.exec(str)) {
+            db.close();
+            return true;
+        }
+        else {
+            db.close();
+            return false;
+        }
+    }
 };
 
