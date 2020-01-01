@@ -13,32 +13,32 @@ LoginDialog::~LoginDialog()
 
 void LoginDialog::on_LogInBtn_clicked()
 {
-    //²»ÓÃÊäÃÜÂëÖ±½Ó½ø
+    //ä¸ç”¨è¾“å¯†ç ç›´æ¥è¿›
 
-    emit openTeacherWidget();
-    return;
+    //emit openTeacherWidget();
+   // return;
     //////////////////////////////////////
 
     QString usr_id = ui.userLineEdit->text();
     QString pwd = ui.pwdLineEdit->text();
     QString type;
-    if (ui.StuRadioButton->isChecked()) type = "Ñ§Éú";
-    else if (ui.TeacherRadioButton->isChecked()) type = "½ÌÊ¦";
+    if (ui.StuRadioButton->isChecked()) type = "å­¦ç”Ÿ";
+    else if (ui.TeacherRadioButton->isChecked()) type = "æ•™å¸ˆ";
     else if (ui.rootRadioButton->isChecked()) type = "root";
 
 
     else {
-        MsgInterface::show_error("Ò»¶¨ÊÇ","¹ş¹ş¹ş");
+        MsgInterface::show_error("ä¸€å®šæ˜¯","å“ˆå“ˆå“ˆ");
         return;
     }
     if (SqlQuery::LoginQuery(usr_id, pwd, type))
     {
         if (type == "root") emit openRootWidget();
-        else if (type == "½ÌÊ¦") emit openTeacherWidget();
+        else if (type == "æ•™å¸ˆ") emit openTeacherWidget();
         else emit openMainWidget();
     }
     else {
-        MsgInterface::show_error("¾¯¸æ", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+        MsgInterface::show_error("è­¦å‘Š", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
         return;
     }
 }
