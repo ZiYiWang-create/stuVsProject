@@ -15,6 +15,7 @@ signals:
     void openMainWidget();
     void openResDialog();
     void openRootWidget();
+    void openStudentWidget(QString id);
     void openTeacherWidget();
 
 private slots:

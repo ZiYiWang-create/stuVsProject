@@ -10,10 +10,10 @@ MainWidget::MainWidget(QWidget* parent) :
     //////////////////////////////////////////// 登录对话框////////////////////////////////////////////
     Logindialog = new LoginDialog;
     Logindialog->show();
-    connect(Logindialog, SIGNAL(openMainWidget()), this, SLOT(showMainWidget()));
+    //connect(Logindialog, SIGNAL(openMainWidget()), this, SLOT(showMainWidget()));
     connect(Logindialog, SIGNAL(openRootWidget()), this, SLOT(showRootWidget()));
     connect(Logindialog, SIGNAL(openTeacherWidget()), this, SLOT(showTeacherWidget()));
-
+    connect(Logindialog, SIGNAL(openStudentWidget(QString)), this, SLOT(showStudentWidget(QString)));
     /////////////////////////////////////////// 注册对话框/////////////////////////////////////////////
     resDialog = new RegisterDialog;
     connect(Logindialog, SIGNAL(openResDialog()), resDialog, SLOT(show()));
@@ -49,4 +49,12 @@ void MainWidget::showTeacherWidget()
     teacherWidget->show();
     Logindialog->close();
     connect(teacherWidget, SIGNAL(backToLogin()), Logindialog, SLOT(show()));
+}
+void MainWidget::showStudentWidget(QString id)
+{
+    studentWidget = new StuWidget;
+    studentWidget->show();
+    studentWidget->setId(id);
+    Logindialog->close();
+    connect(studentWidget, SIGNAL(backToLogin()), Logindialog, SLOT(show()));
 }

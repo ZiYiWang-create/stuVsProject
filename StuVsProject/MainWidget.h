@@ -6,7 +6,7 @@
 #include"rootwidget.h"
 #include "ui_MainWidget.h"
 #include "TeacherWidget.h"
-
+#include "StuWidget.h"
 class MainWidget : public QWidget
 {
     Q_OBJECT
@@ -18,7 +18,7 @@ public:
 protected slots:
     void showMainWidget();
     void showRootWidget();
-
+    void showStudentWidget(QString id);
     void showTeacherWidget();
 
 private:
@@ -27,4 +27,5 @@ private:
     RegisterDialog* resDialog;
     RootWidget* rootWidget;
     TeacherWidget* teacherWidget;
+    StuWidget* studentWidget;
 };

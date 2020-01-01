@@ -298,5 +298,27 @@ public:
             return false;
         }
     }
+    
+    //学生自己修改信息
+    static bool updateStuInfo(QString id, QString name, QString sex, QString navite, QString tel, QString college, QString major, QString className, QString dormitory)
+    {
+        QSqlDatabase db = createConnection();
+        if (!db.open()) {
+            MsgInterface::show_error("错误", "连接服务器错误");
+            return false;
+        }
+        QSqlQuery query(db);
+        QString str = QString("update student_info set name=\"") + name + QString("\",sex=\"") + sex + QString("\",native=\"") + navite + QString("\",tel=\"") + tel +
+            QString("\",college=\"") + college + QString("\",major=\"") + major + QString("\",class=\"") + className + QString("\",dormitory=\"") + dormitory + 
+            QString("\" where id=\"%1\";").arg(id);
+        if (query.exec(str)) {
+            db.close();
+            return true;
+        }
+        else {
+            db.close();
+            return false;
+        }
+    }
 };
 
