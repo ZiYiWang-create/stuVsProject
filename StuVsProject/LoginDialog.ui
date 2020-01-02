@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>LoginDialog</string>
+   <string>登录</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -47,7 +47,54 @@
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
-      <string notr="true">QWidget#widget{border-image: url(:/check_in/Resources/maxwell-ridgeway-UyhtqolKMb4-unsplash.jpg);}</string>
+      <string notr="true">
+QWidget#widget{border-image: url(:/check_in/Resources/maxwell-ridgeway-UyhtqolKMb4-unsplash.jpg);}
+QPushButton
+{
+    color:white;
+    background-color:rgb(14 , 150 , 254);
+    border: 1px solid rgb(11 , 137 , 234);
+}
+
+QPushButton:hover
+{
+    color:white;
+    background-color:rgb(44 , 137 , 255);
+    border: 1px solid rgb(11 , 137 , 234);
+}
+
+QPushButton:pressed
+{
+    color:white;
+    background-color:rgb(14 , 135 , 228);
+    border: 1px solid rgb(12 , 138 , 235);
+    padding-left:3px;
+    padding-top:3px;
+}
+
+QPushButton
+{
+    color:black;
+    background-color:rgb(238 , 238 , 238);
+    border: 1px solid rgb(183 , 183 , 183);
+}
+
+QPushButton:hover
+{
+    color:black;
+    background-color:rgb(228 , 240 , 250);
+    border: 1px solid rgb(15 , 150 , 255);
+}
+
+QPushButton:pressed
+{
+    color:black;
+    background-color:rgb(204 , 228 , 247);
+    border: 1px solid rgb(1 , 84 , 153);
+    padding-left:3px;
+    padding-top:3px;
+}
+</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -80,6 +127,12 @@
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_3">
+          <property name="horizontalSpacing">
+           <number>16</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>20</number>
+          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="label">
             <property name="styleSheet">
@@ -128,6 +181,12 @@ font-size:15px;}</string>
           </item>
           <item row="2" column="0" colspan="2">
            <layout class="QGridLayout" name="gridLayout_2">
+            <property name="horizontalSpacing">
+             <number>11</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>14</number>
+            </property>
             <item row="0" column="0">
              <widget class="QRadioButton" name="StuRadioButton">
               <property name="styleSheet">

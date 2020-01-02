@@ -434,7 +434,9 @@ void TeacherWidget::on_searchBtn_2_clicked()
 			query1.next();
 		}
 		ui.comboBox->addItems(list);
-
+	}
+	else {
+		MsgInterface::show_error("", "学号错误或没有成绩");
 	}
 
 }

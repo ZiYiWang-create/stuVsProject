@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>TeacherWidget</string>
+   <string>学生管理系统</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#widget_2{
@@ -497,7 +497,7 @@ font-size:15px;}
 background-color: #444444;</string>
        </property>
        <property name="currentIndex">
-        <number>4</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="blankpage"/>
        <widget class="QWidget" name="enterPage">
