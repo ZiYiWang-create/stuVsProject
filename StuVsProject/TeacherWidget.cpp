@@ -15,24 +15,50 @@ TeacherWidget::TeacherWidget(QWidget *parent)
 	connect(ui.enterBtn, &QPushButton::clicked, [=]() {
 		ui.stackedWidget->setCurrentWidget(ui.enterPage);
 		show_enter_page();
+		ui.enterBtn->setDown(true);
+		ui.modifyBtn->setDown(false);
+		ui.infoSearchBtn->setDown(false);
+		ui.scoreSearchBtn->setDown(false);
+		ui.allInfoBtn->setDown(false);
 		});	
 
 	// 修改信息界面
 	connect(ui.modifyBtn, &QPushButton::clicked, [=]() {
 		ui.stackedWidget->setCurrentWidget(ui.modifyPage);
+		ui.enterBtn->setDown(false);
+		ui.modifyBtn->setDown(true);
+		ui.infoSearchBtn->setDown(false);
+		ui.scoreSearchBtn->setDown(false);
+		ui.allInfoBtn->setDown(false);
 		});
 
 	//基本信息查询界面
 	connect(ui.infoSearchBtn, &QPushButton::clicked, [=]() {
 		ui.stackedWidget->setCurrentWidget(ui.infoSearchPage);
+		ui.enterBtn->setDown(false);
+		ui.modifyBtn->setDown(false);
+		ui.infoSearchBtn->setDown(true);
+		ui.scoreSearchBtn->setDown(false);
+		ui.allInfoBtn->setDown(false);
 		});
 
 	//分数查询界面
 	connect(ui.scoreSearchBtn, &QPushButton::clicked, [=]() {
 		ui.stackedWidget->setCurrentWidget(ui.scoreSearchPage);
+		ui.enterBtn->setDown(false);
+		ui.modifyBtn->setDown(false);
+		ui.infoSearchBtn->setDown(false);
+		ui.scoreSearchBtn->setDown(true);
+		ui.allInfoBtn->setDown(false);
 		});
+	//所有信息查询界面
 	connect(ui.allInfoBtn, &QPushButton::clicked, [=]() {
 		ui.stackedWidget->setCurrentWidget(ui.allInfoPage);
+		ui.enterBtn->setDown(false);
+		ui.modifyBtn->setDown(false);
+		ui.infoSearchBtn->setDown(false);
+		ui.scoreSearchBtn->setDown(false);
+		ui.allInfoBtn->setDown(true);
 		this->on_allInfoBtn_clicekd();
 		});
 	connect(ui.comboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(value_change(QString)));
@@ -46,6 +72,11 @@ TeacherWidget::~TeacherWidget()
 //录入界面
 void TeacherWidget::show_enter_page()
 {
+	ui.enterBtn->setDown(true);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QSqlDatabase db = SqlQuery::createConnection();
 	if (!db.open()) {
 		QMessageBox::warning(NULL, "错误", "连接服务器错误");
@@ -61,26 +92,29 @@ void TeacherWidget::show_enter_page()
 //添加界面增加一行按钮
 void TeacherWidget::on_addBtn_clicked()
 {
-	//设置修改策略
-	//model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-	//
-	//static int flag = 0;
-	//if ((flag % 2) == 1) {
-	//	flag++; 
-	//	return;
-	//}
-	//else flag++;  //此函数为什么会执行两次？
+	ui.enterBtn->setDown(true);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QStringList header;
 	header << "学号" << "课程编号" << "课程名称" << "平时成绩" << "实验成绩" << "卷面成绩" << "学分";
 	ui.enterTableWidget->setColumnCount(header.count());
 	ui.enterTableWidget->setHorizontalHeaderLabels(header);
 	int nRow = ui.enterTableWidget->rowCount();
+
+	ui.enterTableWidget->horizontalHeader()->setVisible(1);
 	ui.enterTableWidget->insertRow(nRow);
 	ui.enterTableWidget->show();
 }
 //添加界面确认添加按钮点击槽函数
 void TeacherWidget::on_sureAddBtn_clicked()
 {
+	ui.enterBtn->setDown(true);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	qDebug() << ui.enterTableWidget->rowCount();
 	qDebug() << ui.enterTableWidget->columnCount();
 	while (ui.enterTableWidget->rowCount())
@@ -116,6 +150,11 @@ void TeacherWidget::on_sureAddBtn_clicked()
 //基本信息查询界面 学号名字查询 按钮点击
 void TeacherWidget::on_pushButton_1_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(true);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QString searchType = "";
 	if (ui.idRadioButton->isChecked())
 	{
@@ -193,6 +232,11 @@ void TeacherWidget::on_pushButton_1_clicked()
 //基本信息查询界面 宿舍查询按钮年级
 void TeacherWidget::on_pushButton_2_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(true);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QString dor = ui.inputLineEdit_2->text();
 	QSqlDatabase db = SqlQuery::createConnection();
 	if (!db.open()) {
@@ -229,6 +273,11 @@ void TeacherWidget::on_pushButton_2_clicked()
 //查看所有学生信息界面 所有信息查询点击
 void TeacherWidget::on_allInfoBtn_clicekd()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(true);
 	QString dor = ui.inputLineEdit_2->text();
 	QSqlDatabase db = SqlQuery::createConnection();
 	if (!db.open()) {
@@ -267,6 +316,11 @@ void TeacherWidget::on_allInfoBtn_clicekd()
 //成绩查询界面 查询按钮点击
 void TeacherWidget::on_searchBtn_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(true);
+	ui.allInfoBtn->setDown(false);
 	QString id = ui.idinputLineEdit->text();
 
 	QSqlDatabase db = SqlQuery::createConnection();
@@ -306,6 +360,11 @@ void TeacherWidget::on_searchBtn_clicked()
 //成绩查询界面 细节展示
 void TeacherWidget::on_radioButton_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(false);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(true);
+	ui.allInfoBtn->setDown(false);
 	if (!ui.radioButton->isChecked()) return this->on_searchBtn_clicked();
 	QString id = ui.idinputLineEdit->text();
 	QSqlDatabase db = SqlQuery::createConnection();
@@ -348,6 +407,11 @@ void TeacherWidget::on_radioButton_clicked()
 //成绩修改界面 查询按钮点击
 void TeacherWidget::on_searchBtn_2_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(true);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QString id = ui.lineEdit->text();
 	QSqlDatabase db = SqlQuery::createConnection();
 	if (!db.open()) {
@@ -377,6 +441,11 @@ void TeacherWidget::on_searchBtn_2_clicked()
 //成绩修改界面 下拉框选择事件
 void TeacherWidget::value_change(QString value)
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(true);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QString id = ui.lineEdit->text();
 	QSqlDatabase db = SqlQuery::createConnection();
 	if (!db.open()) {
@@ -408,6 +477,11 @@ void TeacherWidget::value_change(QString value)
 //成绩修改界面 确认修改点击事件
 void TeacherWidget::on_mod_sure_Btn_clicked()
 {
+	ui.enterBtn->setDown(false);
+	ui.modifyBtn->setDown(true);
+	ui.infoSearchBtn->setDown(false);
+	ui.scoreSearchBtn->setDown(false);
+	ui.allInfoBtn->setDown(false);
 	QString id = ui.lineEdit->text();
 	QString usualScore = ui.mod_usual_lineEdit->text();
 	QString experimentScore = ui.mod_exp_lineEdit->text();

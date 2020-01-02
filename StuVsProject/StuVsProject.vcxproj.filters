@@ -115,11 +115,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="MainWidget.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="SqlQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -133,5 +128,10 @@
   <ItemGroup>
     <None Include="cpp.hint" />
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

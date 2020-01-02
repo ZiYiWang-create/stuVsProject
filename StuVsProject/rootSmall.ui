@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>523</width>
-    <height>462</height>
+    <height>464</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,11 +17,59 @@
    <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(161, 161, 255);
-background-color: rgb(255, 255, 255);
+      <string notr="true">/* 向在移动 */
+QTabWidget::tab-bar {
+	left:20px;
+}
+
+QTabBar::tab {
+	background:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+					stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                               	stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+	border:2px solid #C4C4C3;
+	border-bottom-color:red;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	min-width:8px;
+	padding:2px;
+}
+
+/* 标签被选中时或鼠标悬浮时 */
+QTabBar::tab:selected,QTabBar::tab:hover {
+	background:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+/* 标签被选中时 */
+QTabBar::tab:selected {
+	border-color:#9B9B9B;
+	border-bottom-color:#C2C7CB;
+}
+
+/* 标签未被选中时 */
+QTabBar::tab:!selected {
+	margin-top:2px;
+}
+
 </string>
      </property>
      <property name="currentIndex">
@@ -31,22 +79,71 @@ background-color: rgb(255, 255, 255);
       <attribute name="title">
        <string>学生</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
         <widget class="QTableView" name="stuTableView">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-alternate-background-color: rgb(255, 255, 255);
-</string>
+          <string notr="true"/>
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>38</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="flashBtn">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+border-radius:5px;
+color:white;
+	background-color: rgb(95, 95, 95);
+font-size:15px;}
+</string>
+           </property>
+           <property name="text">
+            <string>刷新</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3,0">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string>删除：</string>
@@ -58,6 +155,20 @@ alternate-background-color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="delBtn">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+border-radius:5px;
+color:white;
+	background-color: rgb(95, 95, 95);
+font-size:15px;}
+</string>
+           </property>
            <property name="text">
             <string>确定</string>
            </property>
@@ -65,23 +176,28 @@ alternate-background-color: rgb(255, 255, 255);
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="flashBtn">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="text">
-          <string>刷新</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="teacher_page">
       <attribute name="title">
-       <string>add</string>
+       <string>添加</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item row="0" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">

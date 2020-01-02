@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/MainWidget">
-        <file>Resources/{69294EE1-A5EA-A618-B9A9-98ED10AE6C49}.jpg</file>
-        <file>Resources/B00FCDFD-DE52-42F9-B528-DE960C161042_1_105_c.jpeg</file>
-        <file>Resources/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg</file>
-        <file>Resources/maxwell-ridgeway-UyhtqolKMb4-unsplash.jpg</file>
-        <file>Resources/QQ图片20191230224757.jpg</file>
-    </qresource>
-</RCC>
