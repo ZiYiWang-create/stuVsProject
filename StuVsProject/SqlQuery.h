@@ -21,7 +21,6 @@ public:
         db.setPassword("wangziyi2000");
         return db;
     }
-
     //登录查询确认
     static bool LoginQuery(QString id, QString pwd, QString type)
     {
@@ -53,7 +52,6 @@ public:
             return 0;
         }
     }
-
     //判断是否在数据库里
     static bool isInTable(QString id, QString table_name)
     {
@@ -147,9 +145,9 @@ public:
         db.close();
         return true;
     }
-
     //添加人员
-    static bool addStudent(QString id, QString name, QString sex, QString navite,QString tel,QString college, QString major, QString className,QString dormitory,QString pwd="123456")
+    static bool addStudent(QString id, QString name, QString sex, QString navite,QString tel,QString college, 
+        QString major, QString className,QString dormitory,QString pwd="123456")
     {
         QSqlDatabase db = createConnection();
         if (!db.open()) {
@@ -168,7 +166,8 @@ public:
             return false;
         }
     }
-    static bool addTeacher(QString id, QString name, QString sex, QString navite, QString tel, QString college, QString major, QString title, QString pwd="123465")
+    static bool addTeacher(QString id, QString name, QString sex, QString navite, QString tel, QString college, 
+        QString major, QString title, QString pwd="123465")
     {
         QSqlDatabase db = createConnection();
         if (!db.open()) {
@@ -187,7 +186,6 @@ public:
             return false;
         }
     }
-
     //通过id删除数据
     static bool delDataById(QString id,QString type)
     {
@@ -217,9 +215,9 @@ public:
             return false;
         }
     }
-
     //score添加
-    static bool addScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, QString paperScore,QString score)
+    static bool addScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, 
+        QString paperScore,QString score)
     {
         QSqlDatabase db = createConnection();
         if (!db.open()) {
@@ -258,9 +256,9 @@ public:
             return false;
         }
     }
-
     //修改成绩
-    static bool updateScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, QString paperScore, QString score)
+    static bool updateScore(QString id, QString courseId, QString courseName, QString usualScore, QString experimentScore, 
+        QString paperScore, QString score)
     {
         QSqlDatabase db = createConnection();
         if (!db.open()) {
@@ -298,9 +296,9 @@ public:
             return false;
         }
     }
-    
     //学生自己修改信息
-    static bool updateStuInfo(QString id, QString name, QString sex, QString navite, QString tel, QString college, QString major, QString className, QString dormitory)
+    static bool updateStuInfo(QString id, QString name, QString sex, QString navite, QString tel, QString college,
+        QString major, QString className, QString dormitory)
     {
         QSqlDatabase db = createConnection();
         if (!db.open()) {

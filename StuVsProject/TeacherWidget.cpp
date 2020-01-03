@@ -249,24 +249,24 @@ void TeacherWidget::on_pushButton_2_clicked()
 	query.exec(str);
 	int counts = query.size();
 	if (query.next()) {
-		ui.tableWidget_down->setRowCount(counts-1);
+		ui.tableWidget_down->setRowCount(counts);
 		QStringList header;
 		header << "学号" << "姓名" << "性别" << "民族" << "电话" << "学院" << "专业" << "班级" << "宿舍";
 		ui.tableWidget_down->setColumnCount(header.count());
 		ui.tableWidget_down->setHorizontalHeaderLabels(header);
-		query.previous();
-		while (query.next()) {
-			ui.tableWidget_down->setItem(0, 0, new QTableWidgetItem(query.value(0).toString()));
-			ui.tableWidget_down->setItem(0, 1, new QTableWidgetItem(query.value(1).toString()));
-			ui.tableWidget_down->setItem(0, 2, new QTableWidgetItem(query.value(2).toString()));
-			ui.tableWidget_down->setItem(0, 3, new QTableWidgetItem(query.value(3).toString()));
-			ui.tableWidget_down->setItem(0, 4, new QTableWidgetItem(query.value(4).toString()));
-			ui.tableWidget_down->setItem(0, 5, new QTableWidgetItem(query.value(5).toString()));
-			ui.tableWidget_down->setItem(0, 6, new QTableWidgetItem(query.value(6).toString()));
-			ui.tableWidget_down->setItem(0, 7, new QTableWidgetItem(query.value(7).toString()));
-			ui.tableWidget_down->setItem(0, 8, new QTableWidgetItem(query.value(8).toString()));
-			ui.tableWidget_down->show();
+		for(int i=0;i<counts;i++){
+			ui.tableWidget_down->setItem(i, 0, new QTableWidgetItem(query.value(0).toString()));
+			ui.tableWidget_down->setItem(i, 1, new QTableWidgetItem(query.value(1).toString()));
+			ui.tableWidget_down->setItem(i, 2, new QTableWidgetItem(query.value(2).toString()));
+			ui.tableWidget_down->setItem(i, 3, new QTableWidgetItem(query.value(3).toString()));
+			ui.tableWidget_down->setItem(i, 4, new QTableWidgetItem(query.value(4).toString()));
+			ui.tableWidget_down->setItem(i, 5, new QTableWidgetItem(query.value(5).toString()));
+			ui.tableWidget_down->setItem(i, 6, new QTableWidgetItem(query.value(6).toString()));
+			ui.tableWidget_down->setItem(i, 7, new QTableWidgetItem(query.value(7).toString()));
+			ui.tableWidget_down->setItem(i, 8, new QTableWidgetItem(query.value(8).toString()));
+			query.next();
 		}
+		ui.tableWidget_down->show();
 	}
 	else MsgInterface::show_error("错误", "没有找到");
 }

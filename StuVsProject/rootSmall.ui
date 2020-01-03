@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>464</height>
+    <width>577</width>
+    <height>519</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,7 @@ QTabBar::tab:!selected {
 </string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="student_page">
       <attribute name="title">
@@ -198,20 +198,28 @@ font-size:15px;}
        <property name="spacing">
         <number>0</number>
        </property>
-       <item row="0" column="1">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
+       <item row="0" column="1" rowspan="2">
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="minimumSize">
           <size>
-           <width>20</width>
-           <height>130</height>
+           <width>350</width>
+           <height>434</height>
           </size>
          </property>
-        </spacer>
+         <property name="maximumSize">
+          <size>
+           <width>352</width>
+           <height>451</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <widget class="rootInsertTeacher" name="teacherPage"/>
+         <widget class="rootInsertStu" name="studentPage"/>
+        </widget>
        </item>
-       <item row="1" column="0">
+       <item row="0" column="0">
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -224,28 +232,7 @@ font-size:15px;}
          </property>
         </spacer>
        </item>
-       <item row="1" column="1" rowspan="2">
-        <widget class="QStackedWidget" name="stackedWidget">
-         <property name="minimumSize">
-          <size>
-           <width>314</width>
-           <height>375</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>341</width>
-           <height>375</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <widget class="rootInsertTeacher" name="teacherPage"/>
-         <widget class="rootInsertStu" name="studentPage"/>
-        </widget>
-       </item>
-       <item row="2" column="2">
+       <item row="1" column="2">
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -254,19 +241,6 @@ font-size:15px;}
           <size>
            <width>227</width>
            <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>129</height>
           </size>
          </property>
         </spacer>

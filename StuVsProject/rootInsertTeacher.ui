@@ -247,6 +247,19 @@ font-size:15px;}
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>idlineEdit</tabstop>
+  <tabstop>namelineEdit</tabstop>
+  <tabstop>nativelineEdit</tabstop>
+  <tabstop>tellineEdit</tabstop>
+  <tabstop>collegelineEdit</tabstop>
+  <tabstop>majorlineEdit</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>pwdclasslineEdit</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>womanRadioBtn</tabstop>
+  <tabstop>manRadiBtn</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
